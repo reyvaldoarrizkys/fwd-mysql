@@ -1,0 +1,19 @@
+SOAL 2.3
+
+1.	Tampilkan produk yang kode awalnya huruf K dan huruf M
+SELECT * FROM produk WHERE kode LIKE 'K%' OR kode LIKE 'M%';
+2.	Tampilkan produk yang kode awalnya bukan huruf M
+3.	Tampilkan produk-produk televisi
+4.	Tampilkan pelanggan mengandung huruf 'SA'
+5.	Tampilkan pelanggan yang lahirnya bukan di Jakarta dan mengandung huruf ‘yo‘
+6.	Tampilkan pelanggan yang karakter huruf ke – 2 nya adalah A
+
+SOAL 2.4
+
+1.	Tampilkan 2 data produk termahal
+SELECT *FROM produk ORDER BY harga_beli DESC LIMIT 2;
+2.	Tampilkan produk yang paling murah
+3.	Tampilkan produk yang stoknya paling banyak
+4.	Tampilkan dua produk yang stoknya paling sedikit
+5.	Tampilkan pelanggan yang paling muda
+6.	Tampilkan pelanggan yang paling tua
