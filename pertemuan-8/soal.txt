@@ -1,0 +1,46 @@
+SOAL 6.1
+
+1.	Buatlah Procedure untuk mengupdate harga_jual berdasarkan jenis produk tertentu (jenis_produk_id), beri nama procedure pro_naikan_harga memiliki parameter yang akan menerima argumen: Jenis Produk ID dan Persentase kenaikan harga.
+CREATE PROCEDURE ...
+DELIMITER $$
+MariaDB [dbpos1]> CREATE PROCEDURE pro_naik(
+    -> IN jenis_produk INT,
+    -> IN persentasi_kenaikan INT )
+    -> BEGIN
+    -> UPDATE produk SET harga_jual = harga_jual + (harga_jual * persentasi_kenaikan / 100)
+    -> WHERE jenis_produk_id = jenis_produk;
+    -> END $$
+DELIMITER ;
+MariaDB [dbpos1]> CALL pro_naik(1,4); 4 disini adalah 4%
+CREATE PROCEDURE pro_naikan_harga
+
+2.	Buat fungsi umur dengan parameter yang menerima inputan argumen tipe data date dan mengembalikan hasil perhitungan umur (tahun sekarang dikurang tahun inputan) dengan tipe data bilangan bulat (integer) positif.
+CREATE FUNCTION ...
+MariaDB [dbpos1]> CREATE FUNCTION umur(tgl_lahir DATE)
+    -> RETURNS INT
+    -> BEGIN
+    -> DECLARE umur INT;
+    -> SET umur = YEAR(CURDATE()) - YEAR(tgl_lahir);
+    -> RETURN umur;
+    -> END $$
+Query OK, 0 rows affected (0.038 sec)
+MariaDB [dbpos1]> SELECT nama, umur(tgl_lahir) AS umur FROM pelanggan;
+3.	Buat fungsi kategori_harga dengan parameter yang menerima inputan argument tipe data double dan mengembalikan tipe data string kategori harga berdasarkan: 
+●	0 – 500rb : murah
+●	500rb – 3 juta : sedang
+●	3jt – 10 juta : mahal 
+●	> 10 juta : sangat mahal
+CREATE FUNCTION ...
+
+SOAL 5.2
+
+1.	Buatlah sebuah transaction dengan skenario-skenario statement sebagai berikut:
+●	Mulai transaction
+●	Insert data produk sebanyak 3 record
+●	Update data stok salah satu produk
+●	Buat savepoint
+●	Hapus salah satu data pembayaran
+●	Kembali ke savepoint
+●	Update data iuran salah satu kartu
+●	Akhiri transaction dengan commit
+START TRANSACTION ...
